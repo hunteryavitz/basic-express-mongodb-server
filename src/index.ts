@@ -1,13 +1,11 @@
 require('./models/User')
 require('./models/Item')
-require('./models/geo/Track')
 
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const authRoutes = require('./routes/authRoutes')
 const itemRoutes = require('./routes/itemRoutes')
-const trackRoutes = require('./routes/geo/trackRoutes')
 const requireAuth = require('./middlewares/requireAuth')
 
 const app = express()
@@ -15,7 +13,6 @@ const app = express()
 app.use(bodyParser.json())
 app.use(authRoutes)
 app.use(itemRoutes)
-app.use(trackRoutes)
 
 interface IUser {
     email: string
@@ -23,7 +20,7 @@ interface IUser {
 }
 
 const mongoDbUri
-    = 'mongodb+srv://<username>:<password>@<database>'
+    = 'mongodb+srv://root:MARDthingsareGARD9@cluster0.tdlfesj.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(mongoDbUri)
     .then((response: string) => console.log('connected to mongodb: ' + response))

@@ -6,19 +6,25 @@ const User = mongoose.model('User')
 
 const router = express.Router()
 
-router.post('/signup', async (request: { body: { email: any; password: any } },
-                              response: { send: (arg0: { token: any }) => void
-                                  status: (arg0: number) => { (): any
-                                      new(): any; send: { (arg0: any): any
-                                          new(): any } } }) => {
+router.post('/signup', async (request: any, response: any) => {
+    console.log('request.body', request.body)
 
     const { email, password } = request.body
 
+    console.log('email', email)
+    console.log('password', password)
+
     try {
-        const { _id, save } = new User({ email, password })
-        await save()
+        const user = new User({ email, password })
+        const { _id, save } = user
+
+        await user.save()
+
+        console.log('saved')
 
         const token = jwt.sign({ userId: _id }, 'secretsauce')
+
+        console.log('token', token)
 
         response.send({ token })
     } catch (error: any) {
