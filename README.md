@@ -2,6 +2,8 @@
 
 This is a simple server that uses Express and MongoDB to create a REST API.
 
+It uses a simple authentication with password encryption / salting.
+
 ## Description
 
 This server is a simple REST API that uses Express and MongoDB to create a database of users and items.  This is a stub
@@ -55,8 +57,8 @@ for a more complex server that can be used in other projects.
 * The protected routes are:
     * `http://localhost:3000/signin`
     * `http://localhost:3000/items`
-    * `http://localhost:3000/items/:id`
-
+    * `http://localhost:3000/item`
+ 
 ### Create an Item
 
 * Create an Item by sending a POST request to `http://localhost:3000/items` with the following JSON body:
