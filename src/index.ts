@@ -20,7 +20,7 @@ interface IUser {
 }
 
 const mongoDbUri
-    = 'mongodb+srv://root:MARDthingsareGARD9@cluster0.tdlfesj.mongodb.net/?retryWrites=true&w=majority'
+    = 'mongodb+srv://<username>:<password>@<database>'
 
 mongoose.connect(mongoDbUri)
     .then((response: string) => console.log('connected to mongodb: ' + response))
